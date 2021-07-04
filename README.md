@@ -11,9 +11,9 @@ This project can be used to simulate a heavy top. There are seven different Lie 
 
 For the time integration, one of the following three integration methods can be used:
 
- * A generalized-α Lie group method [`gena`](https://git.mathematik.uni-halle.de/adxzc/gena)
- * A Lie group generalization of the RATTLE method [`RATTLie`](https://git.mathematik.uni-halle.de/adxzc/RATTLie) (In the case of an ODE, RATTLE is just the Störmer-Verlet method.)
- * A generalization of the BDF method to (constrained) differential equations of second order on Lie groups [`BLieDF`](https://git.mathematik.uni-halle.de/adxzc/BLieDF).
+ * A generalized-α Lie group method [`gena`](https://github.com/StHante/gena)
+ * A Lie group generalization of the RATTLE method [`RATTLie`](https://github.com/StHante/RATTLie) (In the case of an ODE, RATTLE is just the Störmer-Verlet method.)
+ * A generalization of the BDF method to (constrained) differential equations of second order on Lie groups [`BLieDF`](https://github.com/StHante/BLieDF).
 
 The implementation of this project is done in modern Fortran. It was only tested with `gfortran` on Linux, but ports to different Fortran compilers and platforms should be easily possible.
 
@@ -21,8 +21,8 @@ The implementation of this project is done in modern Fortran. It was only tested
 In order to build this project the follwing other projects are required. Make sure that they can be found by the makefile.
 This need the following projects:
 
- * For the time integration, at least one of [`gena`](https://git.mathematik.uni-halle.de/adxzc/gena), [`RATTLie`](https://git.mathematik.uni-halle.de/adxzc/RATTLie) or [`BLieDF`](https://git.mathematik.uni-halle.de/adxzc/BLieDF) is needed. The path and the name of the integrator should be saved as the variable `INTEGRATORP` and `INTEGRATOR` in the makefile.
- * [`liegroup`](https://git.mathematik.uni-halle.de/adxzc/liegroup): This is a project that implements a lot of the functions related to quaternions and the Lie groups 𝕊³ and 𝕊³⋉ℝ³. Use `git clone https://git.mathematik.uni-halle.de/adxzc/liegroup.git` in order to clone this project. The path should be saved as the variable `LIEFUNP` in the makefile.
+ * For the time integration, at least one of [`gena`](https://github.com/StHante/gena), [`RATTLie`](https://github.com/StHante/RATTLie) or [`BLieDF`](https://github.com/StHante/BLieDF) is needed. The path and the name of the integrator should be saved as the variable `INTEGRATORP` and `INTEGRATOR` in the makefile.
+ * [`liegroup`](https://github.com/StHante/liegroup): This is a project that implements a lot of the functions related to quaternions and the Lie groups 𝕊³ and 𝕊³⋉ℝ³. Use `git clone https://github.com/StHante/liegroup.git` in order to clone this project. The path should be saved as the variable `LIEFUNP` in the makefile.
  * [`aotus`](https://geb.sts.nt.uni-siegen.de/doxy/aotus/): This project makes it possible to read lua files in Fortran. Use `hg clone https://hg.osdn.net/view/apes/aotus` in order to clone this project by using the mercurial command `hg`. The path should be saved as the variable `AOTP` in the makefile.
  * [`expandconfig`](https://github.com/StHante/expandconfig): This project is used to preprocess the lua-files. Use `git clone https://github.com/StHante/expandconfig.git` in order to clone this project. The path should be saved as the variable `EXPANDCONFIG` in the makefile.
  * [`readLua`](https://github.com/StHante/readLua-for-Matlab-and-Octave): This project makes it possible to read lua files in Matlab. It is not needed to compile the executable, but is used to analyze the test results in Matlab. Use `git clone https://github.com/StHante/readLua-for-Matlab-and-Octave.git` in order to clone this project. The path should be saved as the variable `READLUAP` in the makefile. Also make sure that the variable `MATLAB` is a valid command that starts Matlab. (Note that in order to compile `readLua` your Matlab must be set up to compile mex.) If you can not get this to work, you can manually download the `.m` and `.mex*` files from the repository and copy them to `test/als`.
@@ -138,3 +138,30 @@ In the source code, there are some preprocessor functions and macros used. Here 
 print *, '&
 VARIABLE'
 ```
+
+## Related projects
+Integrators:
+
+ * [The Lie group generalized-α method `gena`](https://github.com/StHante/gena)
+ * [The Lie group BDF method `BLieDF`](https://github.com/StHante/BLieDF)
+ * [The Lie group RATTLE method `RATTLie`](https://github.com/StHante/RATTLie)
+ * [The Lie group SHAKE method `SHAKELie`](https://github.com/StHante/SHAKELie)
+ * [The nonholonomic RATTLie method `RATTLie_nonhol`](https://github.com/StHante/RATTLie_nonhol)
+
+Test problems:
+
+ * [The heavy top example `heavy_top`](https://github.com/StHante/heavy_top)
+ * [The constrained Cosserat beam model `crmS3R3`](https://github.com/StHante/crmS3R3)
+ * [The rolling disk example `rolling_disk`](https://github.com/StHante/rolling_disk)
+
+Miscellaneous:
+
+ * [Implementation of Lie group functions `liegroup`](https://github.com/StHante/liegroup)
+ * [Expand a config file with different configurations to several files `expandconfig`](https://github.com/StHante/expandconfig)
+ * [Read lua files in Matlab and Octave `readLua`](https://github.com/StHante/readLua-for-Matlab-and-Octave)
+
+Third party projects:
+
+ * [Reading lua files in Fortran `aotus`](https://geb.sts.nt.uni-siegen.de/doxy/aotus/)
+ * [GFortran](https://gcc.gnu.org/fortran/)
+ * [GNU Parallel](https://www.gnu.org/software/parallel/)
